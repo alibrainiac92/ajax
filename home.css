@@ -1,0 +1,53 @@
+body{
+	background:url(images/moviePattern.png) repeat;
+}
+
+#bgd {
+	width: relative;
+	text-align: center;
+}
+
+
+#bodylist{
+
+color: white;
+background-color: black;
+text-align: left;
+list-style-type: none;
+
+}
+
+h1{
+
+	color: white;
+	background: none;
+	text-align: center;
+
+}
+
+
+
+h2{
+	color: #ffb4d9;
+	text-align: center;
+}
+
+#filter-btn{
+	padding-left: 50px;
+	color: white;
+}
+
+#navbar{
+	background-color: white;
+
+}
+
+
+.body-text{
+	color: #ccff33;
+	font-family: "Helvetica","Arial" sans-serif;
+	font-size: 25px;
+	text-align: center;;
+}
+
+

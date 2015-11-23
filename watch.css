@@ -1,0 +1,80 @@
+body{
+	background:url(images/moviePattern.png) repeat;
+}
+
+#bgd {
+	width: relative;
+	text-align: center;
+}
+
+
+#bodylist{
+
+color: #ffb4d9;
+background: none;
+text-align: left;
+list-style-type: none;
+
+}
+
+h1{
+
+color: white;
+background: none;
+text-align: center;
+
+}
+
+#filter-btn{
+	padding-left: 50px;
+	color: white;
+}
+
+#navbar{
+	background-color: white;
+
+
+}
+
+
+.body-text{
+	color: #ccff33;
+	font-family: "Helvetica","Arial" sans-serif;
+	font-size: 20px;
+	padding-left: 25px;
+}
+
+
+
+
+#wrapper{
+	margin-left: 50px;
+	color: black;
+	
+}
+
+
+ul{
+	list-style-type: none;
+	margin-left: -35px;
+}
+
+
+
+/*ul {
+    list-style: none;
+    width:500px;
+}
+li{
+    margin:4px;
+    padding:2px;
+    background:#F9FBF4;
+}
+.addMovie{
+    color:#3EE18B;
+    border: 1px solid #EDEDED;
+}
+.removeMovie {
+    color:#E1626A;
+    text-decoration: line-through;
+    border: 1px dotted #FBD4D2;*/

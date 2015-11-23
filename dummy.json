@@ -1,0 +1,28 @@
+{
+    "movies": [
+    {
+        "title": "The Reanimator",
+        "genre": "Horror"
+    },
+    {
+        "title": "Magnolia",
+        "genre": "Drama"
+     
+    },
+    {
+        "title": "Chocolate",
+        "genre": "Drama/Action"
+      
+    },
+    {
+        "title": "The Raid Redemption",
+        "genre": "Crime/Thriller"
+      
+    },
+    {
+        "title": "American Pie",
+        "genre": "Romance/Comedy"
+        
+    }
+]
+}
