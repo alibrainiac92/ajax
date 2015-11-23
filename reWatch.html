@@ -98,7 +98,7 @@
                 // create a new <li> element with the input value and add it to the list
                 $('<li>' + movie.title + '</li>')
                     .addClass('addMovie')
-                    .appendTo('#bodylist');
+                    .appendTo('#movie');
                 // call our custom function with the newest list event to make sure it has a click event
                 addListEvents($('li:last'));
                 // reset the input text
@@ -188,7 +188,7 @@
     </div> -->
 
     	<div id="wrapper">
-        	<ul id="bodylist">     
+        	<ul id="movie">     
         	</ul>
 			<form id="addMovie-form">
         		<input type="text" id="title"/>
