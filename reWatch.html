@@ -19,25 +19,50 @@
 
 // listen for the document ready event
 		$(document).ready(function(){
+			
+			$('#addMovie-form').on('submit', function(e) {
+                // prevents the submit button from refreshing the page
+                e.preventDefault();
+                // find a movie based on the input text
+                var movie = findMovieByTitle($('input').val());
+                console.log("movie");
+                //console.log(movie);
+                // create a new <li> element with the input value and add it to the list
+                $('<li>' + movie.title + '</li>')
+                    .addClass('addMovie')
+                    .appendTo('#movie');
+                // call our custom function with the newest list event to make sure it has a click event
+                addListEvents($('li:last'));
+                // reset the input text
+                $('input:text').val('');
+            });
+
+            console.log("done");
+
+
+
+
 			// pass in an object that setup the ajax call and handle the success/error responses
-			$.ajax({
-			    url: "http://www.omdbapi.com/?t=Mr.+Brooks&y=&plot=short&r=json",
-			    type: "GET",
-			    crossDomain: true,    // used to prevent cross domain issues
-			    dataType: 'jsonp',    // used to prevent cross domain issues
-			    success: function(response) {     
-			        // The request succeeded
-			        console.log("success");
-			        console.log(response.Title);
-			        $("#movie").html("<p>"+response.Poster+"</p><p>"+response.Title+"</p><p>"+response.Year+"</p><p>"+response.Rated+"</p><p>"+response.Runtime+"</p><p>"+response.Genre+"</p><p>"+response.Country+"</p><p>"+response.Director+"</p><p>"+response.Actors+"</p><p>"+response.Plot+"</p>");
-			        parseOMDBData(response);
-			    },
-			    error: function(xhr, status) {
-			    	// The request failed
-			    	console.log("fail");
-			        console.log(status);
-			    }
-			});
+			function getMovie(movie){
+
+				$.ajax({
+				    url: "http://www.omdbapi.com/?y=&plot=short&r=json&t=" + movie,
+				    type: "GET",
+				    crossDomain: true,    // used to prevent cross domain issues
+				    dataType: 'jsonp',    // used to prevent cross domain issues
+				    success: function(response) {     
+				        // The request succeeded
+				        console.log("data");
+				        $("#movie").html("<p>"+response.Title+"</p><p>"+response.Year+"</p><p>"+response.Rated+"</p><p>"+response.Runtime+"</p><p>"+response.Genre+"</p><p>"+response.Country+"</p><p>"+response.Director+"</p><p>"+response.Actors+"</p><p>"+response.Plot+"</p>");
+				        parseOMDBData(response);*/
+				    },
+				    error: function(xhr, status) {
+				    	// The request failed
+				    	console.log("fail");
+				        console.log(status);
+				    }
+				});
+			}
 
 
 			console.log("end");
@@ -88,39 +113,7 @@
 
 
 
-            $('#addMovie-form').on('submit', function(event) {
-                // prevents the submit button from refreshing the page
-                event.preventDefault();
-                // find a movie based on the input text
-                var movie = findMovieByTitle($('input:text').val());
-                console.log(movie);
-                //console.log(movie);
-                // create a new <li> element with the input value and add it to the list
-                $('<li>' + movie.title + '</li>')
-                    .addClass('addMovie')
-                    .appendTo('#movie');
-                // call our custom function with the newest list event to make sure it has a click event
-                addListEvents($('li:last'));
-                // reset the input text
-                $('input:text').val('');
-            });
-
-
-
-            // accepts a movie title and returns an object that has the same tittle
-            /*function findMovieByTitle(movieTitle) {
-                var movie;
-                // loop through the movies and check if the titles are the same
-                console.log(json.data);
-                for (var i = 0; i < json.data.movies.length; i++) {
-                    if (json.data.movies[i].title == movieTitle) {
-                        console.log("match");
-                        movie = json.data.movies[i];
-                    }
-                }
-                return movie;
-            }*/
-            console.log("done");
+            
         });
 
 

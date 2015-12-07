@@ -13,14 +13,10 @@
 	<link rel="stylesheet" href="neverAgain.css" media="screen"> -->
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  	
-
 </head>
 <body>
 
-
-
-<div id= "container">
+    <div id= "container">
         <div id= "bgd">
             <a class="logo" href="home.html">
                 <img class="logo" src="images/movieSiteName.png" position: "center"/></a>
@@ -65,207 +61,47 @@
                 </a>
  -->
 
-
-
-    </div>
     	<div id="wrapper">
+            <div class="Title"> </div>
+            <div class="Year"></div>
+            <div class="Plot"></div>
 
-        	<ul id="bodylist">     
-        	</ul>
 			<form id="addMovie-form">
         		<input type="text" id="title"/>
         		<input type="submit" id="add" value="+"/>
-        	</form>
-
-        	
+        	</form> 
+            <ul id="bodylist"> 
+            </ul>   	
     	</div>
-
-
-    	<div id="result"></div>
-
-	
-
-
-
-
-<!--
-
-		STORAGE!!!
-		STORAGE!!!
-		STORAGE!!!
-
-// The object to serialize
-var myObject = new MyObject();
- 
- // The Serializer
-var serializer = new GSerializer();
- 
-// Grab the serialized XML
-var serializedXML = serializer.serialize(myObject, 'MyObject');
- 
-// Deserialize the object from the serialized XML string
-var deserializedObject = serializer.deserialize(serializedXML);
-
-
-
-
-
-    	<div>
-			<label class="control-label" for="t">Title:</label>
-			<input type="text" id="t" name="t" class="input-small">
-			&nbsp;&nbsp;
-			<label class="control-label" for="y">Year:</label>
-			<input type="text" id="y" name="y" class="input-small" style="width: 100px;">
-			&nbsp;&nbsp;
-			<label class="control-label">Plot:</label>
-			<select name="plot" style="width: 100px;">
-			    <option value="short" selected="">Short</option>
-			    <option value="full">Full</option>
-			</select>
-			&nbsp;&nbsp;
-			<label class="control-label">Response:</label>
-			<select name="r" style="width: 100px;">
-			    <option value="json">JSON</option>
-			    <option value="xml">XML</option>
-			</select>
-			&nbsp;&nbsp;
-			<button id="search-by-title-button" type="button" class="btn-sm btn-primary">Search</button>
-			<button id="search-by-title-reset" type="reset" class="btn-sm">Reset</button>
-		</div>
-	-->
-
-	</div>
-	
-
-	<!--
-	<script type="text/javascript">
-
-		$(document).ready(function(){
-
-		var movies={
-			directory: "images/",
-			photos:["1.jpeg","2.jpeg","3.jpeg","4.jpeg","5.jpeg"],
-			captions:["Crouching Tiger Hidden Dragon","The Good The Bad The Weird","Kung Fu Hustle","Shaolin","Journey to the West"],
-		}
-	</script>
--->
-
-  <!--
-  $ (document.reading(function){
-	$.ajax({
-		url:"",
-		type:"GET",
-		success: function (response){
-			console.log
-			console.log
-			
-
-			$('#summary').html(response.currently.summary);
-
-			OR
-
-			$.each(response.DATA, function (key,val){
-				console.log(val.IMAGES.STANDARD_RESOLUTION);
-				$'<li><img src="'+val.IMAGES.STANDARD_RESOLUTION.url'"/></li>'.appendto('#movies');
-			});
-		}
-	})
-  });
-
-  var poster= val.IMAGES.STANDARD_RESOLUTION.url;
-  var actor= val.USER.USERNAME;
-  var description= val.MOVIE.DESCRIPTION;
-  
-  $('<li>'<img src="'PHOTO+'">'</li>);
-	^ find the complete code from GARVIN or on class website, FIX
--->
-<script> 
-
-       
-
-        $(document).ready(function() {
-            var JSON;
-            $.getJSON("dummy.json", function(data) {
-                console.log("got some JSON");
-                JSON = data;
-                $.each(data, function(key, val) {
-                    console.log(val);
-                    var el = $("<li><p>" + val.movies + "</p><p>" + val.title + val.genre + "</p></li>");
-                    $('#movies').append(el);
-                });
+   <script>
+        $(document).ready(function(){
+            $('#addMovie-form').on('submit',function(e){
+                e.preventDefault();
+                var movie = $('input').val();
+                getMovie(movie);
+                
             });
+            function getMovie(movie){
+                $.ajax({
+                    url:"http://www.omdbapi.com/?t=" + movie,
+                    type: "GET",
+                    crossDomain: true,    // used to prevent cross domain issues
+                    //dataType: 'jsonp', 
+                    success:function(data){
+                    
+                    $("#bodylist").append(data.Title + data.Year + data.Genre + data.Rated + data.Runtime + data.Plot);
+                        console.log(data);
+                       
+                    },
 
-           // $("p").filter(".intro");
-            //$(selector).filter(criteria,function(index))  
-
-
-            $('li').each(function() {
-                $(this).addClass('addMovie');
-                addListEvents($(this));
-            });
-
-
-            function addListEvents($li) {
-                // add a click event for each <li> element
-                $li.click(function() {
-                    // remove the todo class and add done
-                    if ($(this).hasClass('addMovie')) {
-                        $(this).removeClass('addMovie');
-                        $(this).addClass('removeMovie');
-                    }
-                    // animate and remove the element from the dom
-                    /*$(this).slideUp(500,function(){
-                        console.log("Removed Movie");
-                        $(this).remove();
-                    }*/
-
-
-
-                    // remove the done class and add todo
-                    else {
-                        $(this).removeClass('removeMovie').addClass('addMovie');
+                    error:function(error){
+                        console.log(error);
                     }
                 });
             }
-
-            // add new item
-            $('#addMovie-form').on('submit', function(event) {
-                // prevents the submit button from refreshing the page
-                event.preventDefault();
-                // find a movie based on the input text
-                var movie = findMovieByTitle($('input:text').val());
-                console.log(movie);
-                //console.log(movie);
-                // create a new <li> element with the input value and add it to the list
-                $('<li>' + movie.title + '</li>')
-                    .addClass('addMovie')
-                    .appendTo('#bodylist');
-                // call our custom function with the newest list event to make sure it has a click event
-                addListEvents($('li:last'));
-                // reset the input text
-                $('input:text').val('');
-            });
-
-            // accepts a movie title and returns an object that has the same tittle
-            function findMovieByTitle(movieTitle) {
-                var movie;
-                // loop through the movies and check if the titles are the same
-                console.log(JSON);
-                for (var i = 0; i < JSON.movies.length; i++) {
-                    if (JSON.movies[i].title == movieTitle) {
-                        console.log("match");
-                        movie = JSON.movies[i];
-                    }
-                }
-                return movie;
-            }
-            console.log("end");
+            localStorage.setItem('title','data');
+            var title= localStorage.getItem('title');
         });
-        
-      
     </script>
-
-
-
 </body>
 </html>
