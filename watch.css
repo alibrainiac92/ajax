@@ -10,11 +10,42 @@ body{
 
 #bodylist{
 
-color: #ffb4d9;
-background: none;
-text-align: left;
-list-style-type: none;
 
+}
+
+.movieWrap{
+	float: left;
+	color: #cfe3f9;
+	background: none;
+	text-align: left;
+	list-style-type: none;
+	font-size: 14px;
+	line-height: 22px;
+	margin-top: 35px;
+	width: 16%;
+	margin-right: 50px;
+	min-width: 225px;
+}
+
+#p01{
+	font-size: 19px;
+	color: #cfe3f9;
+	line-height: 26px;
+
+
+}
+
+.title{
+	color: #eef3c7;
+	font-size: 19px;
+
+	
+}
+
+.genre, .rated, .runtime, .year, .plot{
+	color: #eef3c7;
+	
+	font-size: 14px; 
 }
 
 h1{
@@ -54,10 +85,19 @@ text-align: center;
 }
 
 
-ul{
+/*ul{
 	list-style-type: none;
 	margin-left: -35px;
+	margin-top: 20px;
+	line-height: 10px;
 }
+
+.id{
+	list-style-type: none;
+	margin-left: -35px;
+	margin-top: 20px;
+	line-height: 10px;
+}*/
 
 
 
