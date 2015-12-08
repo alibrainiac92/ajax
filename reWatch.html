@@ -60,18 +60,18 @@
                     
                 </a>
  -->
+    
 
     	<div id="wrapper">
-            <div class="Title"> </div>
-            <div class="Year"></div>
-            <div class="Plot"></div>
 
 			<form id="addMovie-form">
         		<input type="text" id="title"/>
         		<input type="submit" id="add" value="+"/>
+                <input type="text" id="title"/>
+                <input type="button" onclick="delete()" value="-"/>
         	</form> 
-            <ul id="bodylist"> 
-            </ul>   	
+            <div id="bodylist"> 
+            </div>   	
     	</div>
    <script>
         $(document).ready(function(){
@@ -88,8 +88,8 @@
                     crossDomain: true,    // used to prevent cross domain issues
                     //dataType: 'jsonp', 
                     success:function(data){
-                    
-                    $("#bodylist").append("<p>"+data.Title+"</p><p>"+data.Year+"</p><p>"+data.Genre+"</p><p>"+data.Rated+"</p><p>"+data.Runtime+"</p><p>"+data.Plot+"</p>");
+                        updateLS(data);
+                        addNewMovie(data);
                         console.log(data);
                        
                     },
@@ -100,8 +100,40 @@
                 });
             }
 
-            localStorage.setItem('title','data');
-            var title= localStorage.getItem('title');
+            function updateLS(movie){
+                var m = JSON.parse(localStorage.getItem('movies'));
+                if (!m){
+                    m = [];
+                }
+                m.push(movie);
+                localStorage.setItem('movies', JSON.stringify(m));
+            }
+
+            function addNewMovie(data){
+                $("#bodylist").append("<div class= 'movieWrap'>" + 
+                    "<p id= 'p01'>" + 
+                    "<span class='title'>" + 
+                    "Title: " + "</span>" + data.Title + "</p><p id= 'p02'>" + 
+                    "<span class='genre'>" + "Genre: " + "</span>" + data.Genre + "</p><p id= 'p03'>" + 
+                    "<span class='rated'>" + "Rated: " + "</span>" + data.Rated + "</p><p id= 'p04'>"+ 
+                    "<span class='year'>" + "Year: " + "</span>" + data.Year + "</p><p id= 'p05'>"+ 
+                    "<span class='runtime'>" + "Runtime: " + "</span>" + data.Runtime + "</p><p id= 'p06'>"+ 
+                    "<span class='plot'>" + "Plot: " + "</span>" + data.Plot+"</p>" + "</div>");
+            }
+
+            var history = JSON.parse(localStorage.getItem('movies'));
+            if (history.length > 0){
+                console.log("add movies to screen");
+                console.log(history);
+                $.each(history, function(key, val){
+                    addNewMovie(val);
+                });
+            }
+
+            function delete(){
+            }
+
+            //add delete function for when accidentally add movies-- click function
         });
     </script>
 </body>
