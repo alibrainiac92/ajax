@@ -34,7 +34,7 @@
             }
 
             function addNewMovie(data){
-                $("#bodylist").append("<div class= 'movieWrap'>" + 
+                $("#bodylist").prepend("<div class= 'movieWrap'>" + 
                     "<p id= 'p01'>" + 
                     "<span class='title'>" + 
                     "Title: " + "</span>" + data.Title + "</p><p id= 'p02'>" + 
@@ -72,3 +72,4 @@
         });
 
 //function to check to see when each <a> is active and if true it styles it a specific way
+//when page click on/ if page location true apply these styles
