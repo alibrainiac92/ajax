@@ -2,15 +2,14 @@ body{
 	background:url(images/moviePattern.png) repeat;
 }
 
-#bgd {
-	width: relative;
-	text-align: center;
-}
 
 
-#bodylist{
 
 
+.logo{
+	padding-left:15px;
+	padding-right:15px;
+	margin-top: 5px;
 }
 
 .movieWrap{
@@ -61,12 +60,36 @@ text-align: center;
 	color: white;
 }
 
-#navbar{
-	background-color: white;
 
+.navbar{
+	
+	background-color: #404040;
+	border:none;
+	margin-top: -10px;
+}
+
+.navbar-default .navbar-nav li a{
+	color:#cfe3f9;
+	font-family: "Helvetica","Arial" sans-serif;
+	font-size: 15px;
 
 }
 
+.navbar-default .navbar-nav li a:hover{
+	color:#fdbdbd ;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#eachSelected{
+	color:#fdbdbd ;
+	font-size: 18px;
+	font-weight: bold;
+}
+/*a{
+	letter-spacing:.1px;
+}
+*/
 
 .body-text{
 	color: #ccff33;
@@ -83,6 +106,13 @@ text-align: center;
 	color: black;
 	
 }
+
+/*.search{
+	list-style: none;
+	color:white;
+	font-size: 20px;
+	font-family: "Helvetica","Arial" sans-serif;
+}*/
 
 
 /*ul{

@@ -14,12 +14,13 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
+
 <body>
 
     <div id= "container">
         <div id= "bgd">
             <a class="logo" href="home.html">
-                <img class="logo" src="images/movieSiteName.png" position: "center"/></a>
+                <img class="img-responsive center-block logo" src="images/movieSiteName.png" /></a>
             
         </div>
         <nav class="navbar navbar-default">
@@ -38,7 +39,9 @@
 
                 <div class="collapse navbar-collapse" id="Navbar">
                     <ul class="nav navbar-nav ullist">
+
                         <li><a href="home.html">Home</a></li>
+                        <li><a href="all.html">All</a></li>
                         <li><a href="watch.html">Watch</a></li>
                         <li><a href="watched.html">Watched</a></li>
                         <li><a href="rewatch.html">ReWatch</a></li>
@@ -63,78 +66,17 @@
     
 
     	<div id="wrapper">
-
+            <li class= "search"> Search</li>
 			<form id="addMovie-form">
         		<input type="text" id="title"/>
         		<input type="submit" id="add" value="+"/>
-                <input type="text" id="title"/>
-                <input type="button" onclick="delete()" value="-"/>
+                <!--<input type="text" id="title"/>
+                 <input type="button" onclick="delete()" value="-"/> -->
         	</form> 
             <div id="bodylist"> 
             </div>   	
     	</div>
-   <script>
-        $(document).ready(function(){
-            $('#addMovie-form').on('submit',function(e){
-                e.preventDefault();
-                var movie = $('input').val();
-                getMovie(movie);
-                
-            });
-            function getMovie(movie){
-                $.ajax({
-                    url:"http://www.omdbapi.com/?t=" + movie,
-                    type: "GET",
-                    crossDomain: true,    // used to prevent cross domain issues
-                    //dataType: 'jsonp', 
-                    success:function(data){
-                        updateLS(data);
-                        addNewMovie(data);
-                        console.log(data);
-                       
-                    },
-
-                    error:function(error){
-                        console.log(error);
-                    }
-                });
-            }
-
-            function updateLS(movie){
-                var m = JSON.parse(localStorage.getItem('movies'));
-                if (!m){
-                    m = [];
-                }
-                m.push(movie);
-                localStorage.setItem('movies', JSON.stringify(m));
-            }
-
-            function addNewMovie(data){
-                $("#bodylist").append("<div class= 'movieWrap'>" + 
-                    "<p id= 'p01'>" + 
-                    "<span class='title'>" + 
-                    "Title: " + "</span>" + data.Title + "</p><p id= 'p02'>" + 
-                    "<span class='genre'>" + "Genre: " + "</span>" + data.Genre + "</p><p id= 'p03'>" + 
-                    "<span class='rated'>" + "Rated: " + "</span>" + data.Rated + "</p><p id= 'p04'>"+ 
-                    "<span class='year'>" + "Year: " + "</span>" + data.Year + "</p><p id= 'p05'>"+ 
-                    "<span class='runtime'>" + "Runtime: " + "</span>" + data.Runtime + "</p><p id= 'p06'>"+ 
-                    "<span class='plot'>" + "Plot: " + "</span>" + data.Plot+"</p>" + "</div>");
-            }
-
-            var history = JSON.parse(localStorage.getItem('movies'));
-            if (history.length > 0){
-                console.log("add movies to screen");
-                console.log(history);
-                $.each(history, function(key, val){
-                    addNewMovie(val);
-                });
-            }
-
-            function delete(){
-            }
-
-            //add delete function for when accidentally add movies-- click function
-        });
+   <script src="style.js">
     </script>
 </body>
 </html>

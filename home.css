@@ -2,10 +2,7 @@ body{
 	background:url(images/moviePattern.png) repeat;
 }
 
-#bgd {
-	width: relative;
-	text-align: center;
-}
+
 
 
 #bodylist{
@@ -16,6 +13,46 @@ text-align: left;
 list-style-type: none;
 
 }
+
+.logo{
+	padding-left:15px;
+	padding-right:15px;
+	margin-top: 5px;
+}
+
+.navbar{
+	
+	background-color: #404040;
+	border:none;
+	margin-top: -10px;
+}
+
+.navbar{
+	
+	background-color: #404040;
+	border:none;
+	margin-top: -10px;
+}
+
+.navbar-default .navbar-nav li a{
+	color:#cfe3f9;
+	font-family: "Helvetica","Arial" sans-serif;
+	font-size: 15px;
+
+}
+
+.navbar-default .navbar-nav li a:hover{
+	color:#fdbdbd ;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#homeSelected{
+	color:#fdbdbd ;
+	font-size: 18px;
+	font-weight: bold;
+}
+
 
 h1{
 
@@ -28,8 +65,9 @@ h1{
 
 
 h2{
-	color: #ffb4d9;
+	color: #fdbdbd ;
 	text-align: center;
+
 }
 
 #filter-btn{
@@ -37,17 +75,16 @@ h2{
 	color: white;
 }
 
-#navbar{
-	background-color: white;
 
-}
 
 
 .body-text{
-	color: #ccff33;
+	color: #cfe3f9;
 	font-family: "Helvetica","Arial" sans-serif;
 	font-size: 25px;
-	text-align: center;;
-}
+	text-align: center;
+	font-size: 20px;
+	}
+
 
 
