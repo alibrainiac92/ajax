@@ -3,9 +3,6 @@ body{
 }
 
 
-
-
-
 .logo{
 	padding-left:15px;
 	padding-right:15px;
@@ -24,6 +21,14 @@ body{
 	width: 16%;
 	margin-right: 50px;
 	min-width: 225px;
+}
+
+.movieWrap img{
+	width:100%;
+	max-width:300px;
+	padding-bottom:35px;
+	/*height:100%;*/
+
 }
 
 #p01{
