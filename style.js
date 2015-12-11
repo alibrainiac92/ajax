@@ -53,6 +53,7 @@ $(document).ready(function() {
                 addNewMovie(val);
             });
         }
+    });
 
         //  function delete(){
         //}
