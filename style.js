@@ -53,12 +53,7 @@ $(document).ready(function() {
                 addNewMovie(val);
             });
         }
-    });
 
-        //  function delete(){
-        //}
-
-        //add delete function for when accidentally add movies-- click function
 });
 
 
