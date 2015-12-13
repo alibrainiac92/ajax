@@ -8,7 +8,7 @@ $(document).ready(function() {
 
         function getMovie(movie) {
             $.ajax({
-                url: "http://www.omdbapi.com/?apikey=4d52ab93" + movie,
+                url: "http://www.omdbapi.com/?apikey=4d52ab93&t=" + movie,
                 type: "GET",
                 crossDomain: true, // used to prevent cross domain issues
                 //dataType: 'jsonp', 
@@ -35,8 +35,8 @@ $(document).ready(function() {
         }
 
         function addNewMovie(data) {
-            $("#bodylist").prepend("<div class= 'movieWrap'>" + '<img src=' + data.Poster + '>' +
-                "<span class='title'>" +
+            $("#bodylist").prepend("<div class= 'movieWrap'>" + '<img src=' + data.Poster + '>' + "<p id= 'p01'>" +
+                "<span class='title'>" + 
                 "Title: " + "</span>" + data.Title + "</p><p id= 'p02'>" +
                 "<span class='genre'>" + "Genre: " + "</span>" + data.Genre + "</p><p id= 'p03'>" +
                 "<span class='rated'>" + "Rated: " + "</span>" + data.Rated + "</p><p id= 'p04'>" +
@@ -46,13 +46,32 @@ $(document).ready(function() {
         }
 
         var history = JSON.parse(localStorage.getItem('movies'));
-        if (history.length > 0) {
+        if (history && history.length > 0) {
             console.log("add movies to screen");
             console.log(history);
             $.each(history, function(key, val) {
                 addNewMovie(val);
             });
         }
+
+        $(document).ready(function(){
+            addClickEvent($('.movieWrap')); //makes all li a click event
+            //create list
+
+            $('button').click(function(){
+                addClickEvent($('.movieWrap').last());
+            });
+
+            function addClickEvent(el){
+                $(el).click(function(){
+                    
+                     $(this).slideUp(250,function(){
+                        $(this).remove();
+                    });
+
+                 });
+                }
+            });
 
 });
 
