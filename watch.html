@@ -79,5 +79,24 @@
     	</div>
    <script src="style.js">
     </script>
+
+
+
+
+
+    <!--
+    function removeLSItem(movie) {
+            var m = JSON.parse(localStorage.getItem('movies'));
+            // delete element here
+            localStorage.setItem('movies', JSON.stringify(m));
+        }
+         function removeLSItem(movieTitle) {
+            var m = JSON.parse(localStorage.getItem('movies'));
+            var filteredMovies = _.reject(m,function(obj){
+           return obj.Title == movieTitle; // _. is the same as $. -- it's just using the underscore library instead of the jquery library 
+      });
+            localStorage.setItem('movies', JSON.stringify(filteredMovies));
+        }
+    --!>
 </body>
 </html>
